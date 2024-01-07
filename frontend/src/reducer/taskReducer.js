@@ -1,0 +1,53 @@
+function taskReducer(tasks, action) {
+  
+    switch (action.type) {
+        
+        case "ADD_TASK": {
+            return [
+              ...tasks,
+              {
+                title: action.title,
+                description: action.description,
+                completed: false,
+              },
+            ];
+          }
+        case "SET_TASK": {
+            return action.payload
+        }
+        case "REMOVE_TASK": {
+            return tasks.filter((task, index) => index !== action.id)
+        }
+        case "MARK_DONE": {
+            console.log(action.completed);
+            return tasks.map((task, index) => {
+                if (index === action.id) {
+                    return {
+                        ...task,
+                        completed: action.completed
+                    }
+                }
+                return task
+            })
+        }
+        case "EDIT_TASK": {
+            
+            return tasks.map((task, index) => {
+                if (index === action.id) {
+                    return {
+                        ...task,
+                        title: action.title,
+                        description: action.description,
+                        completed:action.completed
+                    }
+                }
+                return task
+            })
+        }
+        default: {
+            throw Error("Unknown Action" + action.type)
+        }
+    }
+}
+
+export default taskReducer;
