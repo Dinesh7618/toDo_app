@@ -1,7 +1,7 @@
 # Installation
 Run the following command to clone the repository
 ```
-git clone https://github.com/Dinesh7618/todoapp-MERN-.git
+git clone https://github.com/Dinesh7618/toDo_app.git
 ```
 Go to ```frontend``` and ```backend``` directory to install packages
 ```
